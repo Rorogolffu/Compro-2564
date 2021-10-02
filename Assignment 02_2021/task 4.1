@@ -1,0 +1,54 @@
+# 4.1
+
+dic_drink = {"คาปูชิโน่": 30, "ม็อคค่า": 30, "โค้ก": 18, "แป็ปซี่": 19, "โซดา": 16, "ชาไทย": 35, "นมสด": 29,
+             "ชาไต้หวัน": 40, "น้ำผลไม้รวม": 25, "โกโก้": 40, "น้ำเสาวรส": 35}
+
+list_order = []
+list_price = []
+list_n_glass = []
+list_result = []
+
+def Total():
+    total = 0
+    for i in range(len(list_order)):
+        s = int(list_price[i]) * int(list_n_glass[i])
+        total += s
+    list_result.append(total)
+
+def Menu():
+    name = input("กรุณากรอกชื่อ : ")
+    print("ยินดีต้อนรับ คุณ {} เข้าสู่ร้านเครื่องดื่ม ซอย 68".format(name))
+    print("รายการเครื่องดื่ม ภายในร้านมีดังนี้")
+    for j in dic_drink:
+        print(j, dic_drink[j], "บาท")
+    n_menu = int(input("ต้องการสั่งกี่เมนูดีครับ ? : "))
+
+    for i in range(n_menu):
+        print("---------------------------------")
+        print("กรอกเมนูที่", i+1, "ที่ต้องการสั่ง")
+        menu = input("กรอกชื่อเมนูเครื่องดื่ม ที่ต้องการ : ")
+        n_glass = int(input("รับเมนูนี้กี่แก้วดีครับ ? : "))
+
+        if menu in dic_drink.keys():
+            list_order.append(menu)
+            list_price.append(dic_drink.get(menu))
+            list_n_glass.append(n_glass)
+        else:
+            print("ไม่มีเมนูที่สั่ง ระบบจะคัดเลือก เฉพาะข้อมูลที่มีอยู่ในเมนูทางร้าน")
+            break
+
+    Total()
+    print("------------------------------------")
+    print("คุณ {}".format(name), "ได้ทำการสั่งเมนู ดังนี้")
+    print()
+
+    j = 0
+    for i in list_order:
+        print(i, "จำนวน", list_n_glass[j], "แก้ว")
+        j += 1
+
+    result = int(list_result[0])
+    print()
+    print("รวมราคาทั้งหมดที่ต้องจ่าย : ", result, "บาท")
+
+Menu()
