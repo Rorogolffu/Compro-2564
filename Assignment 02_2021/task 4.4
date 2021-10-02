@@ -1,0 +1,80 @@
+# http://www.digitalschool.club/elearningcom/elearning/python/lesson9/index.php เอกสาร เว็บไซต์แนะนำใช้ในการเรียนการเรียนพื้นฐานได้
+
+import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
+import sys
+
+
+Us = []
+Pw = []
+
+def Exit():
+    status3 = messagebox.askyesno(title="ยืนยัน", message="คุณต้องการปิดใช่หรือไม่")
+    if status3 > 0:
+        sys.exit()
+
+
+def Login():
+    if entry3.get() in Us and entry4.get() in Pw:
+        status1 = messagebox.showinfo(title="ยืนยัน", message="รหัสผ่านถูกต้อง")
+        print("You login Success")
+    else:
+        status2 = messagebox.showerror(title="error", message="รหัสผ่านไม่ถูกต้องกรุณากรอกใหม่")
+        print("Your ID is incorrect")
+
+
+def register():
+    if entry1.get() not in Us and entry2.get() not in Pw:
+        Us.append(entry1.get())
+        Pw.append(entry2.get())
+        print("register success")
+    elif entry1.get() in Us or entry2.get() in Pw:
+        print("This ID has registered")
+
+
+app = tk.Tk()
+
+app.title("Basic Log in")
+app.geometry("1200x500")
+app.maxsize(width=1200, height=500)
+app.minsize(width=500, height=200)
+app.configure(bg="#D68910")
+
+butt1 = Button(app, text='register', fg="#2874A6", cursor='arrow', relief='raised', command=register)
+butt1.place(x=750, y=150, width=100, height=30)
+
+butt2 = Button(app, text='log in', cursor='heart', relief='raised', command=Login)
+butt2.place(x=550, y=300, width=100, height=30)
+
+butt3 = Button(app, text='Exit', cursor='heart', relief='raised', command=Exit)
+butt3.place(x=850, y=450, width=100, height=30)
+
+label_title1 = Label(app, text="New Register", bg="#D68910", fg="#2874A6")
+label_title1.place(x=560, y=50)
+label_us1 = Label(app, text="New username :", bg="#D68910", fg="#2874A6")
+label_us1.place(x=395, y=100)
+label_ps1 = Label(app, text="New password :", bg="#D68910", fg="#2874A6")
+label_ps1.place(x=395, y=150)
+
+label_title2 = Label(app, text="Sign in", bg="#D68910")
+label_title2.pack(side=TOP)
+label_us2 = Label(app, text="Username :", bg="#D68910")
+label_us2.place(x=435, y=230)
+label_ps2 = Label(app, text="Password :", bg="#D68910")
+label_ps2.place(x=435, y=265)
+
+
+entry1 = Entry(app, relief='sunken', bg='#BDC3C7')
+entry1.place(x=500, y=100, width=200, height=30)
+entry2 = Entry(app, relief='sunken', bg='#BDC3C7')
+entry2.place(x=500, y=150, width=200, height=30)
+
+entry3 = Entry(app, relief='sunken', bg='#BDC3C7')
+entry3.place(x=500, y=230, width=200, height=30)
+entry4 = Entry(app, relief='sunken', bg='#BDC3C7')
+entry4.place(x=500, y=265, width=200, height=30)
+
+
+
+app.mainloop()
