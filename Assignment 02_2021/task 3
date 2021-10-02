@@ -1,0 +1,46 @@
+# 3
+print("ยินดีต้อนรับเข้าสู่การลงทะเบียน การสมัครเข้าชมรม นักศีกษา")
+print()
+
+List_music= []
+List_climbing = []
+
+
+def member_of_clubs():
+    print("สมาชิกชมรมดนตรีมีทั้งหมด", len(List_music), "คน")
+    print("ได้แก่")
+    for i in range(len(List_music)):
+        print(List_music[i])
+    print("สมาชิกชมรมปีนเขามีทั้งหมด", len(List_climbing), "คน")
+    print("ได้แก่")
+    for i in range(len(List_climbing)):
+        print(List_climbing[i])
+
+def Login():
+    while True:
+        print("--------------------------------")
+        print("ถ้าต้องการดำเนินการต่อ กด 1 / ต้องการออกจากโปรแกรม กด 2")
+        sign_in = input("กรอกหมายเลข ตามคำสั่งที่ต้องการ :")
+        if sign_in == "1":
+            Name = input("กรอกชื่อ : ")
+            print("----")
+            print("ต้องการชมรมดนตรี กด 1 / หากต้องการชมรมปีนเขา กด 2")
+            Club = input("เลือกหมายเลข ชมรมที่ต้องการสมัคร")
+            if Club == "1":
+                List_music.append(Name)
+            elif Club == "2":
+                List_climbing.append(Name)
+        elif sign_in == "2":
+            member_of_clubs()
+            break
+
+        else:
+            print("กรุณากรอกหมายเลขใหม่อีกครั้ง")
+
+Login()
+
+
+
+# สามารถ copy ชื่อ จากชมรมด้านล่างไปทดลองใน programe ได้นะครับ
+# name และ club สมมุติ ชมรมดนตรี ชัยมงคล อิทธิกร ธนกร
+#                    ชมรมปีนเขา อิทธิ  ชิตดนัย ฌานพิทย์
