@@ -1,0 +1,12 @@
+List_num1 = []
+
+
+for i in range(8):
+    Input_num = int(input("กรอกค่าตัวเลขไปเรื่อยๆ :"))
+    List_num1.append(Input_num)
+
+List_num2 = list(set(List_num1))
+print(List_num2)
+List_num3 = tuple(List_num2)
+print("Max is : ", max(List_num2))
+print("Min is: ", min(List_num2))
